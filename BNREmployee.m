@@ -8,6 +8,14 @@
 #import "BNREmployee.h"
 //编译器需要知道BNRAsset类的具体定义才能处理BNREmployee.m文件，所以治理需要导入BNRAsset.h，而不是使用@class
 #import "BNRAsset.h"
+//类扩展
+@interface BNREmployee()
+{
+    NSMutableArray* _assets;
+}
+@property (nonatomic) unsigned int officeAlarmCode;
+@end
+
 @implementation BNREmployee
 - (double) yearsOfEmployment
 {
@@ -55,6 +63,7 @@
         _assets = [[NSMutableArray alloc] init];
     }
     [_assets addObject:a];
+    a.holder = self;
 }
 - (unsigned int) valueOfAssets
 {

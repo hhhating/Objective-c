@@ -10,7 +10,12 @@
 @implementation BNRAsset
 - (NSString*) description     //改变%@的显示内容
 {
-    return [NSString stringWithFormat:@"<%@: $%u>", self.label, self.resaleValue];
+    if(self.holder){
+        return [NSString stringWithFormat:@"<%@:$%d,assigned to %@>", self.label, self.resaleValue, self.holder];
+    }
+    else{
+        return [NSString stringWithFormat:@"<%@:$%u>", self.label, self.resaleValue];
+    }
 }
 - (void) dealloc    //对象释放执行此方法
 {
